@@ -7,7 +7,6 @@ import { fetchImages } from 'services/api';
 
 class App extends Component {
   state = {
-    showModal: false,
     showLoader: false,
     showStartTitle: true,
     images: [],
@@ -22,8 +21,7 @@ class App extends Component {
       prevState.query !== this.state.query
     ) {
       this.setState({ showLoader: true });
-
-      const data = await fetchImages(this.state.query, this.state.page);
+      try {const data = await fetchImages(this.state.query, this.state.page);
 
       if (!data.hits.length) {
         alert('No images found due to your search inquiry');
@@ -37,7 +35,10 @@ class App extends Component {
           totalFound: data.totalHits,
           showLoader: false,
         }));
+        }
       }
+      catch (error) {console.log(error)}
+      
     }
   }
 
