@@ -15,30 +15,31 @@ class App extends Component {
     totalFound: 0,
   };
 
-  async componentDidUpdate(_, prevState) {
+  componentDidUpdate(_, prevState) {
     if (
       prevState.page !== this.state.page ||
       prevState.query !== this.state.query
     ) {
       this.setState({ showLoader: true });
-      try {
-        const data = await fetchImages(this.state.query, this.state.page);
-        if (!data.hits.length) {
-          alert('No images found due to your search inquiry');
+
+      fetchImages(this.state.query, this.state.page)
+        .then(data => {
+          if (!data.hits.length) {
+            alert('No images found due to your search inquiry');
+          } else {
+            this.setState(prevState => ({
+              showStartTitle: false,
+              images: [...prevState.images, ...data.hits],
+              totalFound: data.totalHits,
+            }));
+          }
+        })
+        .catch(error => alert(error))
+        .finally(prevState =>
           this.setState({
             showLoader: false,
-          });
-        } else {
-          this.setState(prevState => ({
-            showStartTitle: false,
-            images: [...prevState.images, ...data.hits],
-            totalFound: data.totalHits,
-            showLoader: false,
-          }));
-        }
-      } catch (error) {
-        console.log(error);
-      }
+          })
+        );
     }
   }
 
