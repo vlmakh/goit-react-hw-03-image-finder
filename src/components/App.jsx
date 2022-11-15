@@ -21,24 +21,24 @@ class App extends Component {
       prevState.query !== this.state.query
     ) {
       this.setState({ showLoader: true });
-      try {const data = await fetchImages(this.state.query, this.state.page);
-
-      if (!data.hits.length) {
-        alert('No images found due to your search inquiry');
-        this.setState({
-          showLoader: false,
-        });
-      } else {
-        this.setState(prevState => ({
-          showStartTitle: false,
-          images: [...prevState.images, ...data.hits],
-          totalFound: data.totalHits,
-          showLoader: false,
-        }));
+      try {
+        const data = await fetchImages(this.state.query, this.state.page);
+        if (!data.hits.length) {
+          alert('No images found due to your search inquiry');
+          this.setState({
+            showLoader: false,
+          });
+        } else {
+          this.setState(prevState => ({
+            showStartTitle: false,
+            images: [...prevState.images, ...data.hits],
+            totalFound: data.totalHits,
+            showLoader: false,
+          }));
         }
+      } catch (error) {
+        console.log(error);
       }
-      catch (error) {console.log(error)}
-      
     }
   }
 
