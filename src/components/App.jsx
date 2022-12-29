@@ -75,10 +75,6 @@ class App extends Component {
         {images.length > 0 && images.length < totalFound && (
           <Button loadMore={this.loadMore} />
         )}
-
-        {/* {images.length > 0 && images.length === totalFound && (
-          <p>No more images found</p>
-        )} */}
       </>
     );
   }
