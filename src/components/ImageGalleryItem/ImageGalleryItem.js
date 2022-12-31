@@ -17,14 +17,13 @@ class ImageGalleryItem extends Component {
 
     return (
       <>
-        <li className={css.item}>
-          <img
-            src={webformatURL}
-            alt={tags}
-            className={css.item__img}
-            onClick={this.toggleModal}
-          />
-        </li>
+        <img
+          src={webformatURL}
+          alt={tags}
+          className={css.item__img}
+          onClick={this.toggleModal}
+        />
+
         {this.state.showModal && (
           <Modal onClose={this.toggleModal}>
             <img src={largeImageURL} alt={tags} />

@@ -6,7 +6,9 @@ const ImageGallery = ({ images }) => {
   return (
     <ul className={css.gallery}>
       {images.map(image => (
-        <ImageGalleryItem key={image.id} image={image} />
+        <li className={css.item} key={image.id}>
+          <ImageGalleryItem image={image} />
+        </li>
       ))}
     </ul>
   );

@@ -18,6 +18,6 @@ const fetchImages = async (search, page) => {
 export { fetchImages };
 
 fetchImages.propTypes = {
-  search: PropTypes.string,
-  page: PropTypes.number,
+  search: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
 };
