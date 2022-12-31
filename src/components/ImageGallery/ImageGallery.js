@@ -3,7 +3,6 @@ import css from './ImageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 
 const ImageGallery = ({ images }) => {
-  console.log(images);
   return (
     <ul className={css.gallery}>
       {images.map(image => (
