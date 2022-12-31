@@ -3,6 +3,7 @@ import css from './ImageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 
 const ImageGallery = ({ images }) => {
+  console.log(images);
   return (
     <ul className={css.gallery}>
       {images.map(image => (
@@ -14,6 +15,6 @@ const ImageGallery = ({ images }) => {
 
 export default ImageGallery;
 
-ImageGalleryItem.propTypes = {
-  images: PropTypes.arrayOf(),
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
