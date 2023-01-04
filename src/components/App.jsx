@@ -46,7 +46,7 @@ class App extends Component {
 
     if (prevState.scroll !== this.state.scroll) {
       window.scrollTo({
-        top: this.state.scroll - 200,
+        top: this.state.scroll,
         behavior: 'smooth',
       });
     }
