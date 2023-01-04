@@ -13,6 +13,7 @@ class App extends Component {
     page: 1,
     query: '',
     totalFound: 0,
+    scroll: 0,
   };
 
   componentDidUpdate(_, prevState) {
@@ -31,6 +32,7 @@ class App extends Component {
               showStartTitle: false,
               images: [...prevState.images, ...data.hits],
               totalFound: data.totalHits,
+              scroll: document.documentElement.scrollHeight,
             }));
           }
         })
@@ -40,6 +42,13 @@ class App extends Component {
             showLoader: false,
           })
         );
+    }
+
+    if (prevState.scroll !== this.state.scroll) {
+      window.scrollTo({
+        top: this.state.scroll - 200,
+        behavior: 'smooth',
+      });
     }
   }
 
