@@ -44,9 +44,9 @@ class App extends Component {
         );
     }
 
-    if (prevState.scroll !== this.state.scroll) {
+    if (prevState.scroll !== this.state.scroll && this.state.page > 1) {
       window.scrollTo({
-        top: this.state.scroll,
+        top: this.state.scroll - 240,
         behavior: 'smooth',
       });
     }
