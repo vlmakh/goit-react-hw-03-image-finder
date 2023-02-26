@@ -1,8 +1,9 @@
+import { OnSumbitType } from 'components/types';
 import React from 'react';
 import { Component } from 'react';
 import css from './Searchbar.module.css';
 
-class Searchbar extends Component {
+class Searchbar extends Component <{onSubmit: OnSumbitType}, {}> {
   state = {
     searchQuery: '',
   };
@@ -17,7 +18,7 @@ class Searchbar extends Component {
     if (!this.state.searchQuery.trim()) {
       return alert('Empty query. Please input something for search');
     }
-
+    
     this.props.onSubmit(this.state.searchQuery);
   };
 
@@ -46,7 +47,3 @@ class Searchbar extends Component {
 }
 
 export default Searchbar;
-
-// Searchbar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };

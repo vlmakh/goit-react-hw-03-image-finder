@@ -2,8 +2,9 @@ import { Component } from 'react';
 import css from './ImageGalleryItem.module.css';
 import Modal from 'components/Modal';
 import React from 'react';
+import { ImageType } from 'components/types';
 
-class ImageGalleryItem extends Component {
+class ImageGalleryItem extends Component <{image: ImageType}, {showModal: boolean}> {
   state = {
     showModal: false,
   };
@@ -35,11 +36,3 @@ class ImageGalleryItem extends Component {
 }
 
 export default ImageGalleryItem;
-
-// ImageGalleryItem.propTypes = {
-//   image: PropTypes.shape({
-//     largeImageURL: PropTypes.string.isRequired,
-//     webformatURL: PropTypes.string.isRequired,
-//     tags: PropTypes.string.isRequired,
-//   }).isRequired,
-// };

@@ -1,8 +1,9 @@
 import css from './ImageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 import React from 'react';
+import { ImagesType } from 'components/types';
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ images }: ImagesType) => {
   return (
     <ul className={css.gallery}>
       {images.map(image => (
@@ -15,14 +16,3 @@ const ImageGallery = ({ images }) => {
 };
 
 export default ImageGallery;
-
-// ImageGallery.propTypes = {
-//   images: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       largeImageURL: PropTypes.string.isRequired,
-//       webformatURL: PropTypes.string.isRequired,
-//       tags: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
-// };
