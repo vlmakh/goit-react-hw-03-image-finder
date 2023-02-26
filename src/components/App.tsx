@@ -4,8 +4,10 @@ import Loader from 'components/Loader';
 import ImageGallery from 'components/ImageGallery';
 import Button from 'components/Button';
 import { fetchImages } from 'services/api';
+import { StateType } from './types';
+import React from 'react';
 
-class App extends Component {
+class App extends Component <{}, StateType> {
   state = {
     showLoader: false,
     showStartTitle: true,
@@ -16,7 +18,7 @@ class App extends Component {
     scroll: 0,
   };
 
-  componentDidUpdate(_, prevState) {
+  componentDidUpdate(_: any, prevState: StateType) {
     if (
       prevState.page !== this.state.page ||
       prevState.query !== this.state.query
@@ -28,7 +30,7 @@ class App extends Component {
           if (!data.hits.length) {
             alert('No images found due to your search inquiry');
           } else {
-            this.setState(prevState => ({
+            this.setState((prevState: StateType) => ({
               showStartTitle: false,
               images: [...prevState.images, ...data.hits],
               totalFound: data.totalHits,
@@ -37,7 +39,7 @@ class App extends Component {
           }
         })
         .catch(error => alert(error))
-        .finally(prevState =>
+        .finally(() =>
           this.setState({
             showLoader: false,
           })
@@ -52,7 +54,7 @@ class App extends Component {
     }
   }
 
-  searchQuery = newQuery => {
+  searchQuery = (newQuery: string) => {
     if (newQuery.trim() !== this.state.query) {
       this.setState({
         page: 1,

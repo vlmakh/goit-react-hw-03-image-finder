@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import css from './ImageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem';
+import React from 'react';
 
 const ImageGallery = ({ images }) => {
   return (
@@ -16,13 +16,13 @@ const ImageGallery = ({ images }) => {
 
 export default ImageGallery;
 
-ImageGallery.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      largeImageURL: PropTypes.string.isRequired,
-      webformatURL: PropTypes.string.isRequired,
-      tags: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
+// ImageGallery.propTypes = {
+//   images: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       largeImageURL: PropTypes.string.isRequired,
+//       webformatURL: PropTypes.string.isRequired,
+//       tags: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };

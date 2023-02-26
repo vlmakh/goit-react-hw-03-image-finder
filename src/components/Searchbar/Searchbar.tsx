@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Component } from 'react';
 import css from './Searchbar.module.css';
 
@@ -7,11 +7,11 @@ class Searchbar extends Component {
     searchQuery: '',
   };
 
-  onSearchInput = event => {
+  onSearchInput = (event: { currentTarget: { name: string; value: string; }; }) => {
     this.setState({ [event.currentTarget.name]: event.currentTarget.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
 
     if (!this.state.searchQuery.trim()) {
@@ -47,6 +47,6 @@ class Searchbar extends Component {
 
 export default Searchbar;
 
-Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Searchbar.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
