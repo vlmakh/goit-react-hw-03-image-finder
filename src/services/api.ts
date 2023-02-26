@@ -5,12 +5,10 @@ const MAIN_URL =
 
 export const perPage = 12;
 
-const fetchImages = async (search, page) => {
+const fetchImages = async (search: string, page: number) => {
   return fetch(`${MAIN_URL}&q=${search}&page=${page}&per_page=${perPage}`)
     .then(response => response.json())
     .then(data => {
-      // console.log(data);
-
       return data;
     });
 };
