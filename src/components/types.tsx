@@ -12,12 +12,8 @@ export type LoadMoreType = {
   loadMore: () => void;
 };
 
-export type OnCloseType = {
-  onClose: () => void;
-};
-
 export type OnSumbitType = {
-  onClose: (searchQuery: string) => void;
+  onSubmit: (searchQuery: string) => void;
 };
 
 export type ImageType = {
@@ -28,5 +24,5 @@ export type ImageType = {
 };
 
 export type ImagesType = {
-  images: Array<ImageType>
-}
+  images: Array<ImageType>;
+};

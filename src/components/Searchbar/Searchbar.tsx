@@ -1,24 +1,29 @@
-import { OnSumbitType } from 'components/types';
 import React from 'react';
 import { Component } from 'react';
 import css from './Searchbar.module.css';
 
-class Searchbar extends Component <{onSubmit: OnSumbitType}, {}> {
+type PropsType = {
+  onSubmit: (searchQuery: string) => void;
+};
+
+class Searchbar extends Component<PropsType, {}> {
   state = {
     searchQuery: '',
   };
 
-  onSearchInput = (event: { currentTarget: { name: string; value: string; }; }) => {
+  onSearchInput = (event: {
+    currentTarget: { name: string; value: string };
+  }) => {
     this.setState({ [event.currentTarget.name]: event.currentTarget.value });
   };
 
-  handleSubmit = (event: { preventDefault: () => void; }) => {
+  handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     if (!this.state.searchQuery.trim()) {
       return alert('Empty query. Please input something for search');
     }
-    
+
     this.props.onSubmit(this.state.searchQuery);
   };
 

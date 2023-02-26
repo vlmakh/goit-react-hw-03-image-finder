@@ -1,4 +1,4 @@
-import { Component, ReactNode } from 'react';
+import { Component } from 'react';
 import Searchbar from 'components/Searchbar';
 import Loader from 'components/Loader';
 import ImageGallery from 'components/ImageGallery';
@@ -7,7 +7,7 @@ import { fetchImages } from 'services/api';
 import { StateType } from './types';
 import React from 'react';
 
-class App extends Component <{children: ReactNode}, StateType> {
+class App extends Component <{}, StateType> {
   state = {
     showLoader: false,
     showStartTitle: true,
