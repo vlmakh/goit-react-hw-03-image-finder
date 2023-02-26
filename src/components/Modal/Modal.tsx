@@ -3,11 +3,15 @@ import css from './Modal.module.css';
 import { createPortal } from 'react-dom';
 import React from 'react';
 import { ReactNode } from 'react';
-import { OnCloseType } from 'components/types';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#modal-root') as HTMLElement;
 
-export default class Modal extends Component <{children: ReactNode, onClose: OnCloseType}, {}> {
+type PropsType = {
+  children: ReactNode,
+  onClose: () => void,
+}
+
+export default class Modal extends Component <PropsType, {}> {
   componentDidMount() {
     window.addEventListener('keydown', this.handleEscape);
   }
